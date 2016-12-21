@@ -1,0 +1,58 @@
+buildscript {
+  repositories { jcenter() }
+  dependencies {
+    //Gradle shadow plugin
+    classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+  }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.1'
+}
+
+group = 'com.joeyvmason.serverless.spring'
+version = '1.0'
+
+apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+apply from: "$rootDir/libs.gradle"
+
+repositories {
+    jcenter()
+    flatDir {
+        dirs "$rootDir/lib"
+    }
+    maven { url 'https://jitpack.io' }
+}
+
+configurations.all {
+    all*.exclude group: "commons-logging", module: "commons-logging"
+}
+
+dependencies {
+    compile(
+        libs.awsServerlessJavaContainer,
+        libs.aws.lambda,
+        libs.javax.servletApi,
+        libs.jodaTime,
+        libs.guava,
+        libs.jackson,
+        libs.apacheCommons.lang3,
+        libs.apacheCommons.io,
+        libs.spring.webmvc,
+        libs.logging.logback,
+        libs.logging.jcloverslf4j
+    )
+
+    testCompile libs.test.testng
+    testCompile libs.test.festAssert
+    testCompile libs.test.spring
+}
+
+test {
+    useTestNG()
+}

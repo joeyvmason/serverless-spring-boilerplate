@@ -1,0 +1,33 @@
+ext.versions = [
+        spring: '4.2.1.RELEASE',
+]
+
+ext.libs = [
+        aws:    [
+            lambda: 'com.amazonaws:aws-lambda-java-core:1.1.0'
+        ],
+        awsServerlessJavaContainer: 'com.github.awslabs:aws-serverless-java-container:spring-support-SNAPSHOT',
+        jodaTime: 'joda-time:joda-time:2.7',
+        guava   : 'com.google.guava:guava:18.0',
+        jackson: 'com.fasterxml.jackson.core:jackson-databind:2.5.0',
+        apacheCommons: [
+                lang3: "org.apache.commons:commons-lang3:3.3.2",
+                io: 'commons-io:commons-io:2.4'
+        ],
+        spring  : [
+                webmvc: "org.springframework:spring-webmvc:${versions.spring}"
+        ],
+        logging : [
+                logback     : 'ch.qos.logback:logback-classic:1.1.2',
+                jcloverslf4j: 'org.slf4j:jcl-over-slf4j:1.7.7'
+        ],
+        javax   : [
+                servletApi: 'javax.servlet:javax.servlet-api:3.0.1'
+        ],
+        test    : [
+                testng: 'org.testng:testng:6.8.21',
+                festAssert: 'org.easytesting:fest-assert-core:2.0M10',
+                spring    : "org.springframework:spring-test:${versions.spring}"
+
+        ]
+]

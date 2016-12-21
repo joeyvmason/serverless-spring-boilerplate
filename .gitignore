@@ -1,0 +1,15 @@
+.classpath
+.metadata
+.project
+.settings
+.arcconfig
+*.iml
+*.pyc
+target/
+.idea/
+out/
+/*.DS_Store
+classes
+.idea
+build/
+.gradle/
