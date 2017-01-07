@@ -6,13 +6,14 @@ ext.libs = [
         aws:    [
             lambda: 'com.amazonaws:aws-lambda-java-core:1.1.0'
         ],
-        awsServerlessJavaContainer: 'com.github.awslabs:aws-serverless-java-container:spring-support-SNAPSHOT',
+//        awsServerlessJavaContainer: 'com.github.awslabs:aws-serverless-java-container:f087f8f',
         jodaTime: 'joda-time:joda-time:2.7',
         guava   : 'com.google.guava:guava:18.0',
         jackson: 'com.fasterxml.jackson.core:jackson-databind:2.5.0',
         apacheCommons: [
                 lang3: "org.apache.commons:commons-lang3:3.3.2",
-                io: 'commons-io:commons-io:2.4'
+                io: 'commons-io:commons-io:2.4',
+                fileUpload: 'commons-fileupload:commons-fileupload:1.3.1',
         ],
         spring  : [
                 webmvc: "org.springframework:spring-webmvc:${versions.spring}"

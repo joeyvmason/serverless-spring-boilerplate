@@ -13,7 +13,7 @@ import javax.servlet.Filter;
 
 @ContextConfiguration(classes = {MvcConfig.class})
 @WebAppConfiguration
-public class BaseMvcIntegrationTest extends BaseIntegrationTest{
+public class BaseMvcIntegrationTest extends BaseIntegrationTest {
 
     protected MockMvc mockMvc;
 

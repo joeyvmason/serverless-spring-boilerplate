@@ -35,7 +35,7 @@ configurations.all {
 
 dependencies {
     compile(
-        libs.awsServerlessJavaContainer,
+//        libs.awsServerlessJavaContainer,
         libs.aws.lambda,
         libs.javax.servletApi,
         libs.jodaTime,
@@ -43,10 +43,14 @@ dependencies {
         libs.jackson,
         libs.apacheCommons.lang3,
         libs.apacheCommons.io,
+        libs.apacheCommons.fileUpload,
         libs.spring.webmvc,
         libs.logging.logback,
-        libs.logging.jcloverslf4j
+        libs.logging.jcloverslf4j,
     )
+
+    compile name: 'aws-serverless-java-container-core-0.1'
+    compile name: 'aws-serverless-java-container-spring-0.1'
 
     testCompile libs.test.testng
     testCompile libs.test.festAssert
