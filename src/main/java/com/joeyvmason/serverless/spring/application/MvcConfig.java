@@ -37,17 +37,6 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     }
 
     @Override
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-        configurer.enable();
-    }
-
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(noCacheInterceptor())
-                .addPathPatterns("/**");
-    }
-
-    @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .maxAge(604800) // 1 week
@@ -61,6 +50,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         converters.add(new MappingJackson2HttpMessageConverter(objectMapper()));
         converters.add(new StringHttpMessageConverter());
     }
+
     @Bean
     public MultipartResolver multipartResolver() {
         CommonsMultipartResolver multipartResolver =  new CommonsMultipartResolver();
@@ -68,13 +58,24 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         return multipartResolver;
     }
 
-    private WebContentInterceptor noCacheInterceptor() {
-        WebContentInterceptor webContentInterceptor = new WebContentInterceptor();
-        webContentInterceptor.setCacheSeconds(0);
-        webContentInterceptor.setUseExpiresHeader(true);
-        webContentInterceptor.setUseCacheControlHeader(true);
-        webContentInterceptor.setUseCacheControlNoStore(true);
-        return webContentInterceptor;
-    }
+//    @Override
+//    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+//        configurer.enable();
+//    }
+
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(noCacheInterceptor())
+//                .addPathPatterns("/**");
+//    }
+
+//    private WebContentInterceptor noCacheInterceptor() {
+//        WebContentInterceptor webContentInterceptor = new WebContentInterceptor();
+//        webContentInterceptor.setCacheSeconds(0);
+//        webContentInterceptor.setUseExpiresHeader(true);
+//        webContentInterceptor.setUseCacheControlHeader(true);
+//        webContentInterceptor.setUseCacheControlNoStore(true);
+//        return webContentInterceptor;
+//    }
 
 }

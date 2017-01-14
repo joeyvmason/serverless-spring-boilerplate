@@ -6,6 +6,7 @@ import com.amazonaws.serverless.proxy.internal.model.AwsProxyResponse;
 import com.amazonaws.serverless.proxy.spring.SpringLambdaContainerHandler;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
 public class LambdaHandler implements RequestHandler<AwsProxyRequest, AwsProxyResponse> {
 
@@ -16,7 +17,9 @@ public class LambdaHandler implements RequestHandler<AwsProxyRequest, AwsProxyRe
         if (!initialized) {
             initialized = true;
             try {
-                handler = SpringLambdaContainerHandler.getAwsProxyHandler(MvcConfig.class);
+                AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
+                applicationContext.register(MvcConfig.class);
+                handler = SpringLambdaContainerHandler.getAwsProxyHandler(applicationContext);
             } catch (ContainerInitializationException e) {
                 e.printStackTrace();
                 return null;

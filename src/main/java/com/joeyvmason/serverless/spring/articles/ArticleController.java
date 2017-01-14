@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-@RequestMapping("/articles")
 @RestController
+@RequestMapping("/articles")
 public class ArticleController {
     private static final Logger LOG = LoggerFactory.getLogger(ArticleController.class);
 
