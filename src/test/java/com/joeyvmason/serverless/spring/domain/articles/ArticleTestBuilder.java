@@ -1,4 +1,4 @@
-package com.joeyvmason.serverless.spring.articles;
+package com.joeyvmason.serverless.spring.domain.articles;
 
 import org.apache.commons.lang3.RandomStringUtils;
 

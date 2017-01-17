@@ -1,4 +1,4 @@
-package com.joeyvmason.serverless.spring.application;
+package com.joeyvmason.serverless.spring.domain;
 
 import java.util.Objects;
 

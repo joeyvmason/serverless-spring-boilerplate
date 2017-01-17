@@ -1,4 +1,4 @@
-package com.joeyvmason.serverless.spring.articles;
+package com.joeyvmason.serverless.spring.domain.articles;
 
 import com.amazonaws.serverless.proxy.internal.model.AwsProxyRequest;
 import com.amazonaws.serverless.proxy.internal.model.AwsProxyResponse;

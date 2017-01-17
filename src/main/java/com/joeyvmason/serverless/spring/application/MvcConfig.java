@@ -58,6 +58,21 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         return multipartResolver;
     }
 
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(noCacheInterceptor());
+        registry.addInterceptor(new LoggingInterceptor());
+    }
+
+    private WebContentInterceptor noCacheInterceptor() {
+        WebContentInterceptor webContentInterceptor = new WebContentInterceptor();
+        webContentInterceptor.setCacheSeconds(0);
+        webContentInterceptor.setUseExpiresHeader(true);
+        webContentInterceptor.setUseCacheControlHeader(true);
+        webContentInterceptor.setUseCacheControlNoStore(true);
+        return webContentInterceptor;
+    }
+
 //    @Override
 //    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 //        configurer.enable();

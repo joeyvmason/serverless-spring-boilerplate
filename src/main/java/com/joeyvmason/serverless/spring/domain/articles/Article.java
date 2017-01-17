@@ -1,4 +1,4 @@
-package com.joeyvmason.serverless.spring.articles;
+package com.joeyvmason.serverless.spring.domain.articles;
 
 import com.joeyvmason.serverless.spring.application.Identifiable;
 
