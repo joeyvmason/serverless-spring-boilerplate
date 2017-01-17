@@ -23,7 +23,7 @@ public class IntegrationTestConfig {
 
     @Bean
     public SpringLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> springLambdaContainerHandler() throws ContainerInitializationException {
-        return SpringLambdaContainerHandler.getAwsProxyHandler(applicationContext);
+        return SpringLambdaContainerHandler.getAwsProxyHandler(applicationContext, false);
     }
 
 }

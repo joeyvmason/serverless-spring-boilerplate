@@ -3,29 +3,34 @@ package com.joeyvmason.serverless.spring.application;
 import com.amazonaws.serverless.exceptions.ContainerInitializationException;
 import com.amazonaws.serverless.proxy.internal.model.AwsProxyRequest;
 import com.amazonaws.serverless.proxy.internal.model.AwsProxyResponse;
+import com.amazonaws.serverless.proxy.internal.testutils.MockLambdaContext;
 import com.amazonaws.serverless.proxy.spring.SpringLambdaContainerHandler;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
 public class LambdaHandler implements RequestHandler<AwsProxyRequest, AwsProxyResponse> {
+    private static final Logger LOG = LoggerFactory.getLogger(LambdaHandler.class);
 
-    SpringLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> handler;
-    boolean initialized = false;
+    private SpringLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> handler;
+    private boolean initialized = false;
 
+    @Override
     public AwsProxyResponse handleRequest(AwsProxyRequest awsProxyRequest, Context context) {
         if (!initialized) {
-            initialized = true;
+
             try {
-                AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
-                applicationContext.register(MvcConfig.class);
-                handler = SpringLambdaContainerHandler.getAwsProxyHandler(applicationContext);
+                handler = SpringLambdaContainerHandler.getAwsProxyHandler(MvcConfig.class);
+                initialized = true;
             } catch (ContainerInitializationException e) {
-                e.printStackTrace();
+                LOG.warn("Unable to create handler", e);
                 return null;
             }
         }
 
         return handler.proxy(awsProxyRequest, context);
     }
+
 }

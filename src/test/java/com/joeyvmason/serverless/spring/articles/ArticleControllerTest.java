@@ -66,7 +66,6 @@ public class ArticleControllerTest extends BaseIntegrationTest {
         assertThat(article1.getTitle()).isEqualTo(articleForm.getTitle());
         assertThat(article1.getBody()).isEqualTo(articleForm.getBody());
 
-        // todo: Remove this
         request = new AwsProxyRequestBuilder(String.format("/articles/%s", article1.getId()), "GET")
                 .header("Content-Type", MediaType.APPLICATION_JSON_VALUE)
                 .body(body)
