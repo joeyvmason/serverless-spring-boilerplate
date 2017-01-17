@@ -37,14 +37,6 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     }
 
     @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .maxAge(604800) // 1 week
-                .allowedMethods("PUT", "DELETE", "POST", "GET", "PATCH")
-                .allowedOrigins("*");
-    }
-
-    @Override
     @DependsOn("objectMapper")
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(new MappingJackson2HttpMessageConverter(objectMapper()));
@@ -60,37 +52,6 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(noCacheInterceptor());
         registry.addInterceptor(new LoggingInterceptor());
     }
-
-    private WebContentInterceptor noCacheInterceptor() {
-        WebContentInterceptor webContentInterceptor = new WebContentInterceptor();
-        webContentInterceptor.setCacheSeconds(0);
-        webContentInterceptor.setUseExpiresHeader(true);
-        webContentInterceptor.setUseCacheControlHeader(true);
-        webContentInterceptor.setUseCacheControlNoStore(true);
-        return webContentInterceptor;
-    }
-
-//    @Override
-//    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-//        configurer.enable();
-//    }
-
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(noCacheInterceptor())
-//                .addPathPatterns("/**");
-//    }
-
-//    private WebContentInterceptor noCacheInterceptor() {
-//        WebContentInterceptor webContentInterceptor = new WebContentInterceptor();
-//        webContentInterceptor.setCacheSeconds(0);
-//        webContentInterceptor.setUseExpiresHeader(true);
-//        webContentInterceptor.setUseCacheControlHeader(true);
-//        webContentInterceptor.setUseCacheControlNoStore(true);
-//        return webContentInterceptor;
-//    }
-
 }
