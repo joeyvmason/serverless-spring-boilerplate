@@ -10,7 +10,7 @@ import java.util.UUID;
 @Component
 public class ArticleRepository {
 
-    private Map<String, Article> articles = new HashMap<String, Article>();
+    private Map<String, Article> articles = new HashMap<>();
 
     public Article save(Article article) {
         if (article.getId() == null) {

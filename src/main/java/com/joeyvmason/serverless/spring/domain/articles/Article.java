@@ -1,6 +1,6 @@
 package com.joeyvmason.serverless.spring.domain.articles;
 
-import com.joeyvmason.serverless.spring.application.Identifiable;
+import com.joeyvmason.serverless.spring.domain.Identifiable;
 
 public class Article extends Identifiable {
     private String title;
