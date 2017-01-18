@@ -6,7 +6,7 @@ Serverless Boilerplate for Spring Framework and AWS Lambda
 
 Do you love Spring MVC? Are you interested in developing serverless applications with AWS Lambda? Well, then this is the boilerplate for you! This project demonstrates how to run a Spring MVC application on AWS Lambda, and how to write tests for said appplication. 
 
-This project would not be possible without [aws-serverless-java-container](https://github.com/awslabs/aws-serverless-java-container). The Spring branch for this aws-serverless-java-container is not yet on Maven Central, so for now, I've included compiled libs in the project.
+This project would not be possible without [aws-serverless-java-container](https://github.com/awslabs/aws-serverless-java-container). This project is not yet on Maven Central, so for now, I've included compiled libs in the project.
 
 ### Build
 
