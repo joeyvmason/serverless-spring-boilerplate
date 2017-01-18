@@ -30,6 +30,7 @@ public class ArticleController {
     @RequestMapping(method = RequestMethod.GET)
     public Collection<Article> findAll() {
         LOG.info("Finding all Articles");
+        try {Thread.sleep(500L);} catch (Exception ignored) {}
         return articleRepository.findAll();
     }
 
