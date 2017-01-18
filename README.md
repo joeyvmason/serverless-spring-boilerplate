@@ -32,6 +32,3 @@ This project would not be possible without [aws-serverless-java-container](https
 		- Use Lambda Proxy Integration: `True`
 		- Select region and Lambda function
 		- `Actions` -> `Deploy API`
-
-### Known Issues
-- [Accept-Encoding header causes Spring to throw 500 errors](https://github.com/awslabs/aws-serverless-java-container/issues/5): If `Content-Type` request header is `application/json` instead of `application/json;charset=UTF`, then providing `Accept-Encoding` values other than `UTF-8` (e.g. `gzip, deflate, sdch`) will result in 500 errors when running on AWS Lambda. Have not been able to reproduce this locally, but it happens without fail when run on AWS Lambda.
