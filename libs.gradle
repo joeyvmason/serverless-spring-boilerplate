@@ -1,10 +1,15 @@
 ext.versions = [
         spring: '4.3.5.RELEASE',
+        awsServerlessJavaContainer: '0.2',
 ]
 
 ext.libs = [
         aws:    [
             lambda: 'com.amazonaws:aws-lambda-java-core:1.1.0'
+        ],
+        awsServerlessJavaContainer: [
+                core: "com.amazonaws.serverless:aws-serverless-java-container-core:${versions.awsServerlessJavaContainer}",
+                spring: "com.amazonaws.serverless:aws-serverless-java-container-spring:${versions.awsServerlessJavaContainer}"
         ],
         jodaTime: 'joda-time:joda-time:2.7',
         guava   : 'com.google.guava:guava:18.0',
