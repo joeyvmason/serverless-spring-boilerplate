@@ -17,7 +17,7 @@ import java.util.List;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = {"com.joeyvmason.serverless.spring"})
+@ComponentScan(basePackages = {"com.joeyvmason.serverless.spring"}, lazyInit = true)
 public class MvcConfig extends WebMvcConfigurerAdapter {
     private static final long MAX_UPLOAD_SIZE = 125_829_120L;
 

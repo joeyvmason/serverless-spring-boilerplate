@@ -14,16 +14,14 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 public class LambdaHandler implements RequestHandler<AwsProxyRequest, AwsProxyResponse> {
     private static final Logger LOG = LoggerFactory.getLogger(LambdaHandler.class);
 
-    private SpringLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> handler;
-    private boolean initialized = false;
+    private static SpringLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> handler;
 
     @Override
     public AwsProxyResponse handleRequest(AwsProxyRequest awsProxyRequest, Context context) {
-        if (!initialized) {
+        if (handler == null) {
 
             try {
                 handler = SpringLambdaContainerHandler.getAwsProxyHandler(MvcConfig.class);
-                initialized = true;
             } catch (ContainerInitializationException e) {
                 LOG.warn("Unable to create handler", e);
                 return null;
