@@ -1,5 +1,7 @@
 buildscript {
-  repositories { jcenter() }
+  repositories {
+      jcenter()
+  }
   dependencies {
     //Gradle shadow plugin
     classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
@@ -23,39 +25,19 @@ apply from: "$rootDir/libs.gradle"
 
 repositories {
     jcenter()
-    flatDir {
-        dirs "$rootDir/lib"
-    }
-}
-
-configurations.all {
-    all*.exclude group: "commons-logging", module: "commons-logging"
 }
 
 dependencies {
-    compile(
-        libs.aws.lambda,
-        libs.awsServerlessJavaContainer.core,
-        libs.awsServerlessJavaContainer.spring,
-        libs.javax.servletApi,
-        libs.javax.wsRsApi,
-        libs.jodaTime,
-        libs.guava,
-        libs.jackson,
-        libs.apacheCommons.lang3,
-        libs.apacheCommons.io,
-        libs.apacheCommons.fileUpload,
-        libs.spring.webmvc,
-        libs.logging.logback,
-        libs.logging.jcloverslf4j,
-    )
-
-//    compile name: 'aws-serverless-java-container-core-0.1'
-//    compile name: 'aws-serverless-java-container-spring-0.1'
+    compile libs.awsServerlessJavaContainer.spring
+    compile libs.guava
+    compile libs.jackson
+    compile libs.logging.slf4j
+    compile libs.logging.lambdaLog4j
 
     testCompile libs.test.testng
     testCompile libs.test.festAssert
     testCompile libs.test.spring
+    testCompile libs.test.lang3
 }
 
 test {

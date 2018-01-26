@@ -3,7 +3,6 @@ package com.joeyvmason.serverless.spring.application;
 import com.joeyvmason.serverless.spring.application.exceptions.NotFoundException;
 import com.joeyvmason.serverless.spring.application.exceptions.BadRequestException;
 import com.joeyvmason.serverless.spring.application.exceptions.ErrorResponse;
-import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -22,7 +21,7 @@ public class GlobalControllerExceptionHandler {
     @ExceptionHandler(Throwable.class)
     public @ResponseBody ErrorResponse handleException(HttpServletRequest request, Exception e) {
         LOG.info("Unable to process request for URI({}) with ContentType({})", request.getRequestURI(), request.getContentType(), e);
-        return new ErrorResponse(String.format("Error occurred. Try again later or contact support: %s", ExceptionUtils.getStackTrace(e)));
+        return new ErrorResponse("Error occurred. Unable to process request");
     }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)  // 404
