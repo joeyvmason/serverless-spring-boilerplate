@@ -20,6 +20,8 @@ This project would not be possible without [aws-serverless-java-container](https
 	- Handler: `com.joeyvmason.serverless.spring.application.LambdaHandler`
 	- Role: `Create new Role from Template`
 	- Policy: `Simple Microservices permissions`
+	- Jar: `build/libs/serverless-spring-boilerplate-all.jar`
+	- Memory: Set to max
 
 2. Create API Gateway API
 	1. Create Resource
@@ -32,3 +34,4 @@ This project would not be possible without [aws-serverless-java-container](https
 		- Use Lambda Proxy Integration: `True`
 		- Select region and Lambda function
 		- `Actions` -> `Deploy API`
+
